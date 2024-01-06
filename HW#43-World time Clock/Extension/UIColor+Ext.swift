@@ -12,4 +12,5 @@ enum SystemColor {
     static let black : UIColor = UIColor.black
     static let white : UIColor = UIColor.white
     static let gray  : UIColor = UIColor.lightGray
+    static let dark  : UIColor = UIColor.darkGray
 }

@@ -9,13 +9,18 @@
 /* Begin PBXBuildFile section */
 		EBF2BF7D2B492C7700237A2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF7C2B492C7700237A2D /* AppDelegate.swift */; };
 		EBF2BF7F2B492C7700237A2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF7E2B492C7700237A2D /* SceneDelegate.swift */; };
-		EBF2BF812B492C7700237A2D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF802B492C7700237A2D /* ViewController.swift */; };
-		EBF2BF842B492C7700237A2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF2BF822B492C7700237A2D /* Main.storyboard */; };
 		EBF2BF862B492C7800237A2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF2BF852B492C7800237A2D /* Assets.xcassets */; };
 		EBF2BF892B492C7800237A2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBF2BF872B492C7800237A2D /* LaunchScreen.storyboard */; };
 		EBF2BF942B492C7800237A2D /* HW_43_World_time_ClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF932B492C7800237A2D /* HW_43_World_time_ClockTests.swift */; };
 		EBF2BF9E2B492C7800237A2D /* HW_43_World_time_ClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF9D2B492C7800237A2D /* HW_43_World_time_ClockUITests.swift */; };
 		EBF2BFA02B492C7800237A2D /* HW_43_World_time_ClockUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BF9F2B492C7800237A2D /* HW_43_World_time_ClockUITestsLaunchTests.swift */; };
+		EBF2BFAD2B492C9F00237A2D /* WorldTimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */; };
+		EBF2BFB02B492EBD00237A2D /* WorldTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFAE2B492EBD00237A2D /* WorldTimeTableViewCell.swift */; };
+		EBF2BFB12B492EBD00237A2D /* WorldTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF2BFAF2B492EBD00237A2D /* WorldTimeTableViewCell.xib */; };
+		EBF2BFB52B493AB400237A2D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFB42B493AB400237A2D /* UIColor+Ext.swift */; };
+		EBF2BFB72B493BDD00237A2D /* BarButtonItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFB62B493BDD00237A2D /* BarButtonItem+Ext.swift */; };
+		EBF2BFBE2B49531A00237A2D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFBD2B49531A00237A2D /* Model.swift */; };
+		EBF2BFC12B495C8C00237A2D /* CountryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +44,6 @@
 		EBF2BF792B492C7700237A2D /* HW#43-World time Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW#43-World time Clock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF2BF7C2B492C7700237A2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBF2BF7E2B492C7700237A2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EBF2BF802B492C7700237A2D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EBF2BF832B492C7700237A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EBF2BF852B492C7800237A2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBF2BF882B492C7800237A2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EBF2BF8A2B492C7800237A2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +52,13 @@
 		EBF2BF992B492C7800237A2D /* HW#43-World time ClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HW#43-World time ClockUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF2BF9D2B492C7800237A2D /* HW_43_World_time_ClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_43_World_time_ClockUITests.swift; sourceTree = "<group>"; };
 		EBF2BF9F2B492C7800237A2D /* HW_43_World_time_ClockUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW_43_World_time_ClockUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeTableViewController.swift; sourceTree = "<group>"; };
+		EBF2BFAE2B492EBD00237A2D /* WorldTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeTableViewCell.swift; sourceTree = "<group>"; };
+		EBF2BFAF2B492EBD00237A2D /* WorldTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorldTimeTableViewCell.xib; sourceTree = "<group>"; };
+		EBF2BFB42B493AB400237A2D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		EBF2BFB62B493BDD00237A2D /* BarButtonItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarButtonItem+Ext.swift"; sourceTree = "<group>"; };
+		EBF2BFBD2B49531A00237A2D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +109,12 @@
 		EBF2BF7B2B492C7700237A2D /* HW#43-World time Clock */ = {
 			isa = PBXGroup;
 			children = (
-				EBF2BF7C2B492C7700237A2D /* AppDelegate.swift */,
-				EBF2BF7E2B492C7700237A2D /* SceneDelegate.swift */,
-				EBF2BF802B492C7700237A2D /* ViewController.swift */,
-				EBF2BF822B492C7700237A2D /* Main.storyboard */,
-				EBF2BF852B492C7800237A2D /* Assets.xcassets */,
-				EBF2BF872B492C7800237A2D /* LaunchScreen.storyboard */,
+				EBF2BFBF2B49532000237A2D /* Model */,
+				EBF2BFB32B492EF500237A2D /* Supporting Files */,
+				EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */,
+				EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */,
+				EBF2BFB82B49446A00237A2D /* Extension */,
+				EBF2BFB22B492ECB00237A2D /* WorldTimeTableViewCell */,
 				EBF2BF8A2B492C7800237A2D /* Info.plist */,
 			);
 			path = "HW#43-World time Clock";
@@ -125,6 +135,43 @@
 				EBF2BF9F2B492C7800237A2D /* HW_43_World_time_ClockUITestsLaunchTests.swift */,
 			);
 			path = "HW#43-World time ClockUITests";
+			sourceTree = "<group>";
+		};
+		EBF2BFB22B492ECB00237A2D /* WorldTimeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EBF2BFAE2B492EBD00237A2D /* WorldTimeTableViewCell.swift */,
+				EBF2BFAF2B492EBD00237A2D /* WorldTimeTableViewCell.xib */,
+			);
+			path = WorldTimeTableViewCell;
+			sourceTree = "<group>";
+		};
+		EBF2BFB32B492EF500237A2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBF2BF7C2B492C7700237A2D /* AppDelegate.swift */,
+				EBF2BF7E2B492C7700237A2D /* SceneDelegate.swift */,
+				EBF2BF852B492C7800237A2D /* Assets.xcassets */,
+				EBF2BF872B492C7800237A2D /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBF2BFB82B49446A00237A2D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EBF2BFB42B493AB400237A2D /* UIColor+Ext.swift */,
+				EBF2BFB62B493BDD00237A2D /* BarButtonItem+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EBF2BFBF2B49532000237A2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBF2BFBD2B49531A00237A2D /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF2BF892B492C7800237A2D /* LaunchScreen.storyboard in Resources */,
+				EBF2BFB12B492EBD00237A2D /* WorldTimeTableViewCell.xib in Resources */,
 				EBF2BF862B492C7800237A2D /* Assets.xcassets in Resources */,
-				EBF2BF842B492C7700237A2D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF2BF812B492C7700237A2D /* ViewController.swift in Sources */,
+				EBF2BFBE2B49531A00237A2D /* Model.swift in Sources */,
+				EBF2BFAD2B492C9F00237A2D /* WorldTimeTableViewController.swift in Sources */,
+				EBF2BFB02B492EBD00237A2D /* WorldTimeTableViewCell.swift in Sources */,
+				EBF2BFB72B493BDD00237A2D /* BarButtonItem+Ext.swift in Sources */,
+				EBF2BFC12B495C8C00237A2D /* CountryTableViewController.swift in Sources */,
+				EBF2BFB52B493AB400237A2D /* UIColor+Ext.swift in Sources */,
 				EBF2BF7D2B492C7700237A2D /* AppDelegate.swift in Sources */,
 				EBF2BF7F2B492C7700237A2D /* SceneDelegate.swift in Sources */,
 			);
@@ -297,14 +349,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EBF2BF822B492C7700237A2D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EBF2BF832B492C7700237A2D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EBF2BF872B492C7800237A2D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -447,7 +491,6 @@
 				INFOPLIST_FILE = "HW#43-World time Clock/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -475,7 +518,6 @@
 				INFOPLIST_FILE = "HW#43-World time Clock/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

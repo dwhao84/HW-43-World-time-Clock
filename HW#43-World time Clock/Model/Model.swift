@@ -6,3 +6,11 @@
 //
 
 import Foundation
+let regions: [Locale.Region] = Locale.Region.isoRegions
+let timeZone = TimeZone.knownTimeZoneIdentifiers
+let location: [String] = []
+
+struct TimeInfo {
+    let timeZone: String
+}
+
