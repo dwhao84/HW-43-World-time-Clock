@@ -10,13 +10,13 @@ import UIKit
 class CountryTableViewController: UIViewController {
 
     var tableView: UITableView = UITableView()
-    let searchBarController: UISearchController = UISearchController()
+    let searchBar: UISearchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = SystemColor.citySelectionBackgroundColor
-        view.tintColor       = SystemColor.orange
+//        view.tintColor       = SystemColor.orange
         
         configureTableView()
         addDelegateAndDataSource ()
@@ -26,27 +26,29 @@ class CountryTableViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = SystemColor.citySelectionBackgroundColor
         self.navigationItem.titleView?.backgroundColor = SystemColor.citySelectionBackgroundColor
         
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.popViewController(animated: true)
     }
     
     func configureTableView() {
         tableView.rowHeight  = 45
         tableView.register(CitySelectionTableViewCell.nib(), forCellReuseIdentifier: CitySelectionTableViewCell.identifer)
         tableView.backgroundColor = SystemColor.citySelectionBackgroundColor
-        
         tableView.separatorColor = SystemColor.darkGray
         tableView.separatorStyle = .singleLine
-        
         tableView.allowsSelection = true
-        print(timeZoneArray)
+
+        tableView.tableHeaderView = searchBar
+        searchBar.tintColor       = SystemColor.orange
+        searchBar.backgroundColor = SystemColor.citySelectionBackgroundColor
+        searchBar.placeholder       = "Search"
+        searchBar.showsCancelButton = true
+        searchBar.searchBarStyle    = .minimal
         }
         
     
     func addDelegateAndDataSource () {
         tableView.delegate           = self
         tableView.dataSource         = self
-//        searchBarController.delegate = self
+//        searchBar.delegate = self
     }
     
     func constraintTableView () {
@@ -61,16 +63,19 @@ class CountryTableViewController: UIViewController {
     }
     
     func configureSearchBar () {
-        self.navigationItem.searchController               = searchBarController
-        searchBarController.isActive                       = true
-        searchBarController.searchBar.showsCancelButton    = true
-        searchBarController.searchBar.tintColor            = SystemColor.orange
-        searchBarController.automaticallyShowsCancelButton = true
-        
+        self.navigationController?.navigationBar.isHidden = true
+        self.navigationItem.preferredSearchBarPlacement = .stacked
+        self.navigationItem.titleView?.tintColor = SystemColor.orange
+        searchBar.delegate = self
+        searchBar.showsCancelButton = true
+        searchBar.isEnabled         = true
+        searchBar.tintColor         = SystemColor.orange
+        searchBar.sizeToFit()
     }
 }
 
 extension CountryTableViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
@@ -96,7 +101,7 @@ extension CountryTableViewController: UITableViewDataSource {
     }
 }
 
-extension CountryTableViewController: UISearchControllerDelegate {
+extension CountryTableViewController: UISearchBarDelegate {
     
 }
 
