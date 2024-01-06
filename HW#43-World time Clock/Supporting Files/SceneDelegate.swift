@@ -19,8 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationVC = UINavigationController(rootViewController: worldTimeClockVC)
         self.window?.rootViewController = navigationVC
         self.window?.makeKeyAndVisible()
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

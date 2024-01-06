@@ -14,24 +14,26 @@ class WorldTimeTableViewController: UIViewController {
    
     var tableView: UITableView   = UITableView ()
     
-    static var tableCellArray: [Int] = []
+    static var tableViewArray: [Int] = [1]
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = SystemColor.black
         
-        tableView.rowHeight       = 105
-        tableView.backgroundColor = SystemColor.black
-        tableView.separatorColor  = SystemColor.dark
-        tableView.separatorStyle  = .singleLine
-        tableView.register(WorldTimeTableViewCell.nib(), forCellReuseIdentifier: WorldTimeTableViewCell.identifer)
-        
+        setupTableView                ()
         addDelegateAndDataSource      ()
         configureBarButton            ()
         configureNavigationController ()
         configureTableView            ()
+    }
+    
+    func setupTableView () {
+        tableView.rowHeight       = 105
+        tableView.backgroundColor = SystemColor.black
+        tableView.separatorColor  = SystemColor.darkGray
+        tableView.separatorStyle  = .singleLine
+        tableView.register(WorldTimeTableViewCell.nib(), forCellReuseIdentifier: WorldTimeTableViewCell.identifer)
     }
     
     func addDelegateAndDataSource () {
@@ -42,7 +44,6 @@ class WorldTimeTableViewController: UIViewController {
     func configureTableView () {
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -55,12 +56,12 @@ class WorldTimeTableViewController: UIViewController {
         rightBarButton = UIBarButtonItem(
             image:  BarButtonItem.plusImage,
             style: .plain,
-            target: WorldTimeTableViewController.self,
+            target: self,
             action: #selector(showCountryTableVC))
         leftBarButton = UIBarButtonItem(
             title: "Edit",
             style: .done,
-            target: WorldTimeTableViewController.self,
+            target: self,
             action: nil)
         
         self.navigationItem.leftBarButtonItem              = leftBarButton
@@ -76,11 +77,9 @@ class WorldTimeTableViewController: UIViewController {
     }
     
     @objc func showCountryTableVC () {
-        let countryTableVC = CountryTableViewController()
+        let countryTableVC: UIViewController = CountryTableViewController()
         present(countryTableVC, animated: true)
     }
-    
-    
 }
 
 extension WorldTimeTableViewController: UITableViewDelegate {
@@ -90,7 +89,7 @@ extension WorldTimeTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteRow = UIContextualAction(style: .destructive, title: "delete") { (action, view, completionHandler) in
-                WorldTimeTableViewController.tableCellArray.remove(at: indexPath.row)
+                WorldTimeTableViewController.tableViewArray.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 completionHandler(true)
             }
@@ -101,7 +100,7 @@ extension WorldTimeTableViewController: UITableViewDelegate {
 
 extension WorldTimeTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return WorldTimeTableViewController.tableViewArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,15 +109,12 @@ extension WorldTimeTableViewController: UITableViewDataSource {
         }
         
         
-        
+        cell.selectionStyle = .none
         return cell
     }
     
     
 }
-
-
-
 
 #Preview {
     UINavigationController(rootViewController: WorldTimeTableViewController())

@@ -21,6 +21,8 @@
 		EBF2BFB72B493BDD00237A2D /* BarButtonItem+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFB62B493BDD00237A2D /* BarButtonItem+Ext.swift */; };
 		EBF2BFBE2B49531A00237A2D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFBD2B49531A00237A2D /* Model.swift */; };
 		EBF2BFC12B495C8C00237A2D /* CountryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */; };
+		EBF2BFC42B499E0100237A2D /* CitySelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF2BFC22B499E0100237A2D /* CitySelectionTableViewCell.swift */; };
+		EBF2BFC52B499E0100237A2D /* CitySelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF2BFC32B499E0100237A2D /* CitySelectionTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		EBF2BFB62B493BDD00237A2D /* BarButtonItem+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarButtonItem+Ext.swift"; sourceTree = "<group>"; };
 		EBF2BFBD2B49531A00237A2D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewController.swift; sourceTree = "<group>"; };
+		EBF2BFC22B499E0100237A2D /* CitySelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectionTableViewCell.swift; sourceTree = "<group>"; };
+		EBF2BFC32B499E0100237A2D /* CitySelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitySelectionTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,10 +115,11 @@
 			children = (
 				EBF2BFBF2B49532000237A2D /* Model */,
 				EBF2BFB32B492EF500237A2D /* Supporting Files */,
-				EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */,
-				EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */,
 				EBF2BFB82B49446A00237A2D /* Extension */,
+				EBF2BFC62B499E0600237A2D /* CitySelectionTableViewCell */,
+				EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */,
 				EBF2BFB22B492ECB00237A2D /* WorldTimeTableViewCell */,
+				EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */,
 				EBF2BF8A2B492C7800237A2D /* Info.plist */,
 			);
 			path = "HW#43-World time Clock";
@@ -172,6 +177,15 @@
 				EBF2BFBD2B49531A00237A2D /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		EBF2BFC62B499E0600237A2D /* CitySelectionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				EBF2BFC22B499E0100237A2D /* CitySelectionTableViewCell.swift */,
+				EBF2BFC32B499E0100237A2D /* CitySelectionTableViewCell.xib */,
+			);
+			path = CitySelectionTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBF2BF892B492C7800237A2D /* LaunchScreen.storyboard in Resources */,
+				EBF2BFC52B499E0100237A2D /* CitySelectionTableViewCell.xib in Resources */,
 				EBF2BFB12B492EBD00237A2D /* WorldTimeTableViewCell.xib in Resources */,
 				EBF2BF862B492C7800237A2D /* Assets.xcassets in Resources */,
 			);
@@ -309,6 +324,7 @@
 				EBF2BFAD2B492C9F00237A2D /* WorldTimeTableViewController.swift in Sources */,
 				EBF2BFB02B492EBD00237A2D /* WorldTimeTableViewCell.swift in Sources */,
 				EBF2BFB72B493BDD00237A2D /* BarButtonItem+Ext.swift in Sources */,
+				EBF2BFC42B499E0100237A2D /* CitySelectionTableViewCell.swift in Sources */,
 				EBF2BFC12B495C8C00237A2D /* CountryTableViewController.swift in Sources */,
 				EBF2BFB52B493AB400237A2D /* UIColor+Ext.swift in Sources */,
 				EBF2BF7D2B492C7700237A2D /* AppDelegate.swift in Sources */,
