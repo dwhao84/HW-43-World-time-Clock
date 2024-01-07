@@ -74,6 +74,8 @@ class WorldTimeTableViewController: UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.backgroundColor = .black
         self.navigationItem.title = "World Clocks"
+        self.navigationController?.navigationBar.barTintColor = SystemColor.citySelectionBackgroundColor
+        self.navigationController?.navigationBar.tintColor = SystemColor.orange
     }
     
     @objc func showCountryTableVC () {
@@ -108,9 +110,9 @@ extension WorldTimeTableViewController: UITableViewDataSource {
             fatalError("Unable to dequeueReusableCell")
             
         }
-        cell.cityNameLabel.text = "Taipei"
-        cell.timeDifferentLabel.text  = "+0HRS"
-        cell.nowTimeLabel.text     = "16:32"
+        cell.cityNameLabel.text      = "Taipei"
+        cell.timeDifferentLabel.text = "+0HRS"
+        cell.nowTimeLabel.text       = "16:32"
         
         cell.selectionStyle = .none
         return cell

@@ -11,9 +11,9 @@ class WorldTimeTableViewCell: UITableViewCell {
     
     static let identifer: String = "WorldTimeTableViewCell"
     
-    @IBOutlet weak var timeDifferentLabel:  UILabel!
-    @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var nowTimeLabel:     UILabel!
+    @IBOutlet weak var timeDifferentLabel: UILabel!
+    @IBOutlet weak var cityNameLabel:      UILabel!
+    @IBOutlet weak var nowTimeLabel:       UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
