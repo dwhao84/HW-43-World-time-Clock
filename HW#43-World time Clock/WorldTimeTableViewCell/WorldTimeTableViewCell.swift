@@ -11,7 +11,8 @@ class WorldTimeTableViewCell: UITableViewCell {
     
     static let identifer: String = "WorldTimeTableViewCell"
     
-    @IBOutlet weak var timeDifferentLabel: UILabel!
+    @IBOutlet weak var dateStatusLabel: UILabel!
+    @IBOutlet weak var timeDifferenceLabel: UILabel!
     @IBOutlet weak var cityNameLabel:      UILabel!
     @IBOutlet weak var nowTimeLabel:       UILabel!
     
@@ -19,6 +20,10 @@ class WorldTimeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = SystemColor.black
+        
+        nowTimeLabel.adjustsFontSizeToFitWidth       = true
+        cityNameLabel.adjustsFontSizeToFitWidth      = true
+        dateStatusLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

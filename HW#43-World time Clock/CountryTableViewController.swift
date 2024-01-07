@@ -16,7 +16,6 @@ class CountryTableViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = SystemColor.citySelectionBackgroundColor
-//        view.tintColor       = SystemColor.orange
         
         configureTableView()
         addDelegateAndDataSource ()
@@ -36,14 +35,13 @@ class CountryTableViewController: UIViewController {
         tableView.separatorStyle = .singleLine
         tableView.allowsSelection = true
         tableView.tableHeaderView = searchBar
-
-        }
+    }
         
     
     func addDelegateAndDataSource () {
-        tableView.delegate           = self
-        tableView.dataSource         = self
-        searchBar.delegate = self
+        tableView.delegate   = self
+        tableView.dataSource = self
+        searchBar.delegate   = self
     }
     
     func constraintTableView () {
@@ -65,10 +63,10 @@ class CountryTableViewController: UIViewController {
         searchBar.placeholder       = "Search"
         searchBar.searchBarStyle    = .minimal
         searchBar.showsCancelButton = true
-        searchBar.prompt = "Choose Country"
+        searchBar.prompt            = "Choose Country"
         searchBar.sizeToFit()
-        searchBar.barTintColor = SystemColor.orange
-        searchBar.barStyle = .black
+        searchBar.barTintColor      = SystemColor.orange
+        searchBar.barStyle          = .black
     }
 }
 
@@ -81,13 +79,15 @@ extension CountryTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         WorldTimeTableViewController.tableViewArray.append(indexPath.row)
-        print(WorldTimeTableViewController.tableViewArray)
+        print(indexPath.row)
     }
 }
 
 extension CountryTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeZoneArray.count
+        print(allTimeZone.count)
+        return allTimeZone.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -102,7 +102,7 @@ extension WorldTimeTableViewController: UITableViewDelegate {
 
 extension WorldTimeTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return WorldTimeTableViewController.tableViewArray.count
+        return timeInfoData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -110,15 +110,19 @@ extension WorldTimeTableViewController: UITableViewDataSource {
             fatalError("Unable to dequeueReusableCell")
             
         }
-        cell.cityNameLabel.text      = "Taipei"
-        cell.timeDifferentLabel.text = "+0HRS"
-        cell.nowTimeLabel.text       = "16:32"
+        
+        cell.timeDifferenceLabel.text =
+        timeInfoData[indexPath.row].jetLag
+        cell.dateStatusLabel.text =
+        timeInfoData[indexPath.row].dateStatus
+        
+        cell.cityNameLabel.text      = timeInfoData[indexPath.row].cityName
+        cell.nowTimeLabel.text       = timeInfoData[indexPath.row].currentTime
         
         cell.selectionStyle = .none
+        
         return cell
     }
-    
-    
 }
 
 #Preview {
