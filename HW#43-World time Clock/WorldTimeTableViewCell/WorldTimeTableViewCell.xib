@@ -71,9 +71,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="locationLabel" destination="aI1-GF-sLk" id="qmt-bi-RUf"/>
-                <outlet property="nowTimeLabel" destination="h5y-vD-spK" id="XdA-Vg-E1v"/>
-                <outlet property="timeLabel" destination="oiU-9D-O6R" id="bag-J4-64X"/>
+                <outlet property="cityNameLabel" destination="aI1-GF-sLk" id="qmt-bi-RUf"/>
+                <outlet property="nowTimeLabel" destination="oiU-9D-O6R" id="bag-J4-64X"/>
+                <outlet property="timeDifferentLabel" destination="h5y-vD-spK" id="XdA-Vg-E1v"/>
             </connections>
             <point key="canvasLocation" x="-63.084112149532707" y="32.397408207343418"/>
         </tableViewCell>

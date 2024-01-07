@@ -106,8 +106,11 @@ extension WorldTimeTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WorldTimeTableViewCell.identifer, for: indexPath) as? WorldTimeTableViewCell else {
             fatalError("Unable to dequeueReusableCell")
+            
         }
-        
+        cell.cityNameLabel.text = "Taipei"
+        cell.timeDifferentLabel.text  = "+0HRS"
+        cell.nowTimeLabel.text     = "16:32"
         
         cell.selectionStyle = .none
         return cell

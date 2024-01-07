@@ -35,20 +35,15 @@ class CountryTableViewController: UIViewController {
         tableView.separatorColor = SystemColor.darkGray
         tableView.separatorStyle = .singleLine
         tableView.allowsSelection = true
-
         tableView.tableHeaderView = searchBar
-        searchBar.tintColor       = SystemColor.orange
-        searchBar.backgroundColor = SystemColor.citySelectionBackgroundColor
-        searchBar.placeholder       = "Search"
-        searchBar.showsCancelButton = true
-        searchBar.searchBarStyle    = .minimal
+
         }
         
     
     func addDelegateAndDataSource () {
         tableView.delegate           = self
         tableView.dataSource         = self
-//        searchBar.delegate = self
+        searchBar.delegate = self
     }
     
     func constraintTableView () {
@@ -64,13 +59,16 @@ class CountryTableViewController: UIViewController {
     
     func configureSearchBar () {
         self.navigationController?.navigationBar.isHidden = true
-        self.navigationItem.preferredSearchBarPlacement = .stacked
-        self.navigationItem.titleView?.tintColor = SystemColor.orange
         searchBar.delegate = self
+        searchBar.tintColor       = SystemColor.orange
+        searchBar.backgroundColor = SystemColor.citySelectionBackgroundColor
+        searchBar.placeholder       = "Search"
+        searchBar.searchBarStyle    = .minimal
         searchBar.showsCancelButton = true
-        searchBar.isEnabled         = true
-        searchBar.tintColor         = SystemColor.orange
+        searchBar.prompt = "Choose Country"
         searchBar.sizeToFit()
+        searchBar.barTintColor = SystemColor.orange
+        searchBar.barStyle = .black
     }
 }
 
@@ -95,7 +93,7 @@ extension CountryTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CitySelectionTableViewCell.identifer, for: indexPath) as? CitySelectionTableViewCell else { fatalError()
         }
-        cell.countryLabel.text = timeZoneArray[indexPath.row]
+        cell.countryLabel.text = reserveRegionsName[indexPath.row]
         cell.selectionStyle = .blue
         return cell
     }
