@@ -22,26 +22,35 @@ class CountryTableViewController: UIViewController {
         constraintTableView      ()
         configureSearchBar       ()
         
-//        self.navigationController?.navigationBar.backgroundColor = SystemColor.citySelectionBackgroundColor
-//        self.navigationItem.titleView?.backgroundColor = SystemColor.citySelectionBackgroundColor
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     func configureTableView() {
         tableView.rowHeight  = 45
         tableView.register(CitySelectionTableViewCell.nib(), forCellReuseIdentifier: CitySelectionTableViewCell.identifer)
         tableView.backgroundColor = SystemColor.citySelectionBackgroundColor
-        tableView.separatorColor = SystemColor.darkGray
-        tableView.separatorStyle = .singleLine
+        tableView.separatorColor  = SystemColor.darkGray
+        tableView.separatorStyle  = .singleLine
         tableView.allowsSelection = true
-        tableView.tableHeaderView = searchBar
     }
         
     
     func addDelegateAndDataSource () {
         tableView.delegate   = self
         tableView.dataSource = self
-        searchBar.delegate   = self
     }
     
     func constraintTableView () {
@@ -56,17 +65,20 @@ class CountryTableViewController: UIViewController {
     }
     
     func configureSearchBar () {
-        self.navigationController?.navigationBar.isHidden = true
-        searchBar.delegate = self
+        self.navigationController?.navigationBar.isHidden  = false
+        self.navigationItem.titleView            = searchBar
+        self.navigationItem.title                = "Choose Country"
+        self.navigationItem.titleView?.tintColor = SystemColor.orange
+        
+        
+        searchBar.delegate          = self
         searchBar.isUserInteractionEnabled = true
         searchBar.showsCancelButton = true
         searchBar.tintColor         = SystemColor.orange
-//        searchBar.backgroundColor   = SystemColor.citySelectionBackgroundColor
         searchBar.placeholder       = "Search"
         searchBar.searchBarStyle    = .minimal
         searchBar.showsCancelButton = true
         searchBar.prompt            = "Choose Country"
-        searchBar.barTintColor      = SystemColor.orange
         searchBar.barStyle          = .black
         searchBar.sizeToFit()
     }
@@ -109,8 +121,15 @@ extension CountryTableViewController: UITableViewDataSource {
 }
 
 extension CountryTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+        searchBar.tintColor         = SystemColor.orange
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
+        searchBar.tintColor         = SystemColor.orange
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
