@@ -22,8 +22,8 @@ class CountryTableViewController: UIViewController {
         constraintTableView      ()
         configureSearchBar       ()
         
-        self.navigationController?.navigationBar.backgroundColor = SystemColor.citySelectionBackgroundColor
-        self.navigationItem.titleView?.backgroundColor = SystemColor.citySelectionBackgroundColor
+//        self.navigationController?.navigationBar.backgroundColor = SystemColor.citySelectionBackgroundColor
+//        self.navigationItem.titleView?.backgroundColor = SystemColor.citySelectionBackgroundColor
         
     }
     
@@ -58,15 +58,17 @@ class CountryTableViewController: UIViewController {
     func configureSearchBar () {
         self.navigationController?.navigationBar.isHidden = true
         searchBar.delegate = self
-        searchBar.tintColor       = SystemColor.orange
-        searchBar.backgroundColor = SystemColor.citySelectionBackgroundColor
+        searchBar.isUserInteractionEnabled = true
+        searchBar.showsCancelButton = true
+        searchBar.tintColor         = SystemColor.orange
+//        searchBar.backgroundColor   = SystemColor.citySelectionBackgroundColor
         searchBar.placeholder       = "Search"
         searchBar.searchBarStyle    = .minimal
         searchBar.showsCancelButton = true
         searchBar.prompt            = "Choose Country"
-        searchBar.sizeToFit()
         searchBar.barTintColor      = SystemColor.orange
         searchBar.barStyle          = .black
+        searchBar.sizeToFit()
     }
 }
 
@@ -78,8 +80,15 @@ extension CountryTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        WorldTimeTableViewController.tableViewArray.append(indexPath.row)
-        print(indexPath.row)
+
+        let selectedTimeZone = allTimeZone[indexPath.row]
+        
+        let newTimeInfo = TimeInfo(currentTime: getCurrentTime(city: selectedTimeZone),
+                                   jetLag: calculateTimeDifference(city: selectedTimeZone),
+                                   cityName: getCityName(cityName: selectedTimeZone),
+                                   dateStatus: calculateTheDate(city: selectedTimeZone))
+        timeInfoData.append(newTimeInfo)
+        WorldTimeTableViewController.tableView.reloadData()
     }
 }
 
@@ -100,6 +109,13 @@ extension CountryTableViewController: UITableViewDataSource {
 }
 
 extension CountryTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.dismiss(animated: true)
+    }
     
 }
 

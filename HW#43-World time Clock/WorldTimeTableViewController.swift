@@ -12,7 +12,7 @@ class WorldTimeTableViewController: UIViewController {
     var rightBarButton: UIBarButtonItem = UIBarButtonItem()
     var leftBarButton:  UIBarButtonItem = UIBarButtonItem()
    
-    var tableView: UITableView   = UITableView ()
+    static var tableView: UITableView   = UITableView ()
     
     static var tableViewArray: [Int] = [1]
 
@@ -29,26 +29,26 @@ class WorldTimeTableViewController: UIViewController {
     }
     
     func setupTableView () {
-        tableView.rowHeight       = 105
-        tableView.backgroundColor = SystemColor.black
-        tableView.separatorColor  = SystemColor.darkGray
-        tableView.separatorStyle  = .singleLine
-        tableView.register(WorldTimeTableViewCell.nib(), forCellReuseIdentifier: WorldTimeTableViewCell.identifer)
+        WorldTimeTableViewController.tableView.rowHeight       = 105
+        WorldTimeTableViewController.tableView.backgroundColor = SystemColor.black
+        WorldTimeTableViewController.tableView.separatorColor  = SystemColor.darkGray
+        WorldTimeTableViewController.tableView.separatorStyle  = .singleLine
+        WorldTimeTableViewController.tableView.register(WorldTimeTableViewCell.nib(), forCellReuseIdentifier: WorldTimeTableViewCell.identifer)
     }
     
     func addDelegateAndDataSource () {
-        tableView.delegate   = self
-        tableView.dataSource = self
+        WorldTimeTableViewController.tableView.delegate   = self
+        WorldTimeTableViewController.tableView.dataSource = self
     }
 
     func configureTableView () {
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(WorldTimeTableViewController.tableView)
+        WorldTimeTableViewController.tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            WorldTimeTableViewController.tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            WorldTimeTableViewController.tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            WorldTimeTableViewController.tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            WorldTimeTableViewController.tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
@@ -91,13 +91,12 @@ extension WorldTimeTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteRow = UIContextualAction(style: .destructive, title: "delete") { (action, view, completionHandler) in
-                WorldTimeTableViewController.tableViewArray.remove(at: indexPath.row)
+                timeInfoData.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .left)
                 completionHandler(true)
             }
         return UISwipeActionsConfiguration(actions: [deleteRow])
     }
-    
 }
 
 extension WorldTimeTableViewController: UITableViewDataSource {
@@ -108,8 +107,7 @@ extension WorldTimeTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: WorldTimeTableViewCell.identifer, for: indexPath) as? WorldTimeTableViewCell else {
             fatalError("Unable to dequeueReusableCell")
-            
-        }
+    }
         
         cell.timeDifferenceLabel.text =
         timeInfoData[indexPath.row].jetLag
@@ -118,11 +116,11 @@ extension WorldTimeTableViewController: UITableViewDataSource {
         
         cell.cityNameLabel.text      = timeInfoData[indexPath.row].cityName
         cell.nowTimeLabel.text       = timeInfoData[indexPath.row].currentTime
-        
         cell.selectionStyle = .none
         
         return cell
     }
+    
 }
 
 #Preview {
