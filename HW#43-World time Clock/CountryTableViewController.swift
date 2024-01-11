@@ -12,8 +12,6 @@ class CountryTableViewController: UIViewController {
     var tableView: UITableView = UITableView()
     let searchBar: UISearchBar = UISearchBar()
 
-    let searchController: UISearchController = UISearchController(searchResultsController: nil)
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
