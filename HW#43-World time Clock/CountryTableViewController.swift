@@ -11,7 +11,9 @@ class CountryTableViewController: UIViewController {
 
     var tableView: UITableView = UITableView()
     let searchBar: UISearchBar = UISearchBar()
-    
+
+    let searchController: UISearchController = UISearchController(searchResultsController: nil)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,22 +23,8 @@ class CountryTableViewController: UIViewController {
         addDelegateAndDataSource ()
         constraintTableView      ()
         configureSearchBar       ()
-        
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
     
     func configureTableView() {
         tableView.rowHeight  = 45
@@ -65,21 +53,12 @@ class CountryTableViewController: UIViewController {
     }
     
     func configureSearchBar () {
-        self.navigationController?.navigationBar.isHidden  = false
-        self.navigationItem.titleView            = searchBar
-        self.navigationItem.title                = "Choose Country"
+        searchBar.delegate = self
+        self.navigationItem.titleView = searchBar
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.searchBar.prompt = "Choose Country"
+        self.searchBar.text   = "Search"
         self.navigationItem.titleView?.tintColor = SystemColor.orange
-        
-        
-        searchBar.delegate          = self
-        searchBar.isUserInteractionEnabled = true
-        searchBar.showsCancelButton = true
-        searchBar.tintColor         = SystemColor.orange
-        searchBar.placeholder       = "Search"
-        searchBar.searchBarStyle    = .minimal
-        searchBar.showsCancelButton = true
-        searchBar.prompt            = "Choose Country"
-        searchBar.barStyle          = .black
         searchBar.sizeToFit()
     }
 }
@@ -138,7 +117,9 @@ extension CountryTableViewController: UISearchBarDelegate {
     
 }
 
-
+extension CountryTableViewController: UISearchControllerDelegate {
+    
+}
 
 #Preview {
     UINavigationController(rootViewController: CountryTableViewController())

@@ -13,8 +13,6 @@ class WorldTimeTableViewController: UIViewController {
     var leftBarButton:  UIBarButtonItem = UIBarButtonItem()
    
     static var tableView: UITableView   = UITableView ()
-    
-    static var tableViewArray: [Int] = [1]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +78,8 @@ class WorldTimeTableViewController: UIViewController {
     
     @objc func showCountryTableVC () {
         let countryTableVC: UIViewController = CountryTableViewController()
-        present(countryTableVC, animated: true)
+        countryTableVC.modalPresentationStyle = .popover
+        self.present(countryTableVC, animated: true)
     }
 }
 
