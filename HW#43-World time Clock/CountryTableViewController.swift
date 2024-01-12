@@ -69,7 +69,8 @@ class CountryTableViewController: UIViewController  {
         searchController.hidesNavigationBarDuringPresentation = true
         searchController.automaticallyShowsCancelButton       = true
 
-        searchController.searchResultsUpdater  = self
+        searchController.searchResultsUpdater                 = self
+        searchController.obscuresBackgroundDuringPresentation = false
 
         searchController.searchBar.placeholder       = "Search"
         searchController.searchBar.prompt            = prompt
@@ -113,14 +114,16 @@ extension CountryTableViewController: UITableViewDelegate {
 extension CountryTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(allTimeZone.count)
-        return allTimeZone.count
+        return filterTimeZoneData.count
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CitySelectionTableViewCell.identifer, for: indexPath) as? CitySelectionTableViewCell else { fatalError()
         }
-        cell.countryLabel.text = reserveRegionsName[indexPath.row]
+        
+        let cellOfCountryLabelText = reserveRegionsName[indexPath.row]
+        cell.countryLabel.text = cellOfCountryLabelText
         cell.selectionStyle = .blue
         return cell
     }
@@ -144,11 +147,10 @@ extension CountryTableViewController: UISearchControllerDelegate, UISearchBarDel
 
 extension CountryTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        searchController.searchResultsUpdater = self
-        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
-            filterTimeZoneData = allTimeZone.filter { allTimeZone in (
-                        allTimeZone.description.localizedStandardContains(searchText)
-                    )}
+        if let searchText = searchController.searchBar.text, searchText.isEmpty == false {
+            filterTimeZoneData = allTimeZone.filter ({ cellOfCountryLabelText in
+                cellOfCountryLabelText.description.localizedStandardContains(searchText)
+                    })
                 } else {
                     filterTimeZoneData = allTimeZone
                 }
@@ -166,7 +168,7 @@ extension CountryTableViewController: UIScrollViewDelegate {
                 navigationController?.navigationBar.barTintColor = SystemColor.black
 
             } else {
-                print("Less that \(yOffset)")
+                print("Less than \(yOffset)")
                 self.navigationItem.searchController?.searchBar.tintColor = SystemColor.orange
                 navigationController?.navigationBar.barTintColor = SystemColor.black
             }
