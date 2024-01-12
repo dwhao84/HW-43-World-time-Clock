@@ -23,8 +23,8 @@ class CountryTableViewController: UIViewController  {
         configureTableView()
         addDelegateAndDataSource ()
         constraintTableView      ()
-//        configureSearchBar       ()
         configureSearchController()
+//        scrollViewDidScroll(tableView)
     }
     
     
@@ -41,6 +41,9 @@ class CountryTableViewController: UIViewController  {
     func addDelegateAndDataSource () {
         tableView.delegate   = self
         tableView.dataSource = self
+
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
     }
     
     func constraintTableView () {
@@ -53,41 +56,12 @@ class CountryTableViewController: UIViewController  {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
-    
-    func configureSearchBar () {
-        let standardApperance = self.navigationItem.standardAppearance
 
-        let scrollEdgeAppearance = self.navigationItem.scrollEdgeAppearance
-
-        self.navigationController?.navigationItem.standardAppearance = standardApperance
-        self.navigationController?.navigationItem.scrollEdgeAppearance = scrollEdgeAppearance
-
-        searchBar.showsSearchResultsButton = true
-
-        searchBar.delegate = self
-        self.navigationItem.titleView = searchBar
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.navigationItem.titleView?.tintColor = SystemColor.orange
-        searchBar.showsCancelButton = true
-        searchBar.isTranslucent = false
-        searchBar.prompt        = "Choose Country"
-        searchBar.text          = "Search"
-        searchBar.tintColor     = SystemColor.orange
-        searchBar.barStyle      = .black
-        searchBar.sizeToFit()
-    }
-    
     func configureSearchController () {
 
         let prompt: String = "Change Country"
 
-
-        searchController.delegate = self
-        searchController.searchBar.delegate = self
-
-        let standardApperance = self.navigationItem.standardAppearance
         let scrollEdgeAppearance = self.navigationItem.scrollEdgeAppearance
-//        self.navigationController?.navigationItem.standardAppearance = standardApperance
         self.navigationController?.navigationItem.scrollEdgeAppearance = scrollEdgeAppearance
 
         self.navigationItem.searchController                  = searchController
@@ -179,6 +153,23 @@ extension CountryTableViewController: UISearchResultsUpdating {
                     filterTimeZoneData = allTimeZone
                 }
                 tableView.reloadData()
+        }
+}
+
+extension CountryTableViewController: UIScrollViewDelegate {
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            let yOffset = scrollView.contentOffset.y
+
+            if yOffset > 100 {
+                print("Over than \(yOffset)")
+                self.navigationItem.searchController?.searchBar.tintColor = SystemColor.orange
+                navigationController?.navigationBar.barTintColor = SystemColor.black
+
+            } else {
+                print("Less that \(yOffset)")
+                self.navigationItem.searchController?.searchBar.tintColor = SystemColor.orange
+                navigationController?.navigationBar.barTintColor = SystemColor.black
+            }
         }
 }
 
