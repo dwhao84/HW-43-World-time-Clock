@@ -15,9 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         self.window = window
+        
+        
         let worldTimeClockVC = WorldTimeTableViewController()
-        let navigationVC = UINavigationController(rootViewController: worldTimeClockVC)
-        self.window?.rootViewController = navigationVC
+        let navigationViewController = UINavigationController(rootViewController: worldTimeClockVC)
+
+        self.window?.rootViewController = navigationViewController
         self.window?.makeKeyAndVisible()
     }
 

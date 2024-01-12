@@ -117,9 +117,9 @@
 				EBF2BFB32B492EF500237A2D /* Supporting Files */,
 				EBF2BFB82B49446A00237A2D /* Extension */,
 				EBF2BFC62B499E0600237A2D /* CitySelectionTableViewCell */,
-				EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */,
 				EBF2BFB22B492ECB00237A2D /* WorldTimeTableViewCell */,
 				EBF2BFAC2B492C9F00237A2D /* WorldTimeTableViewController.swift */,
+				EBF2BFC02B495C8C00237A2D /* CountryTableViewController.swift */,
 				EBF2BF8A2B492C7800237A2D /* Info.plist */,
 			);
 			path = "HW#43-World time Clock";

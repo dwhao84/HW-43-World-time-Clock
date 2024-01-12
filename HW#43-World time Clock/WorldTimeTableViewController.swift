@@ -78,8 +78,8 @@ class WorldTimeTableViewController: UIViewController {
     
     @objc func showCountryTableVC () {
         let countryTableVC: UIViewController = CountryTableViewController()
-        countryTableVC.modalPresentationStyle = .popover
-        self.present(countryTableVC, animated: true)
+        let countryTableNC: UINavigationController = UINavigationController(rootViewController: countryTableVC)
+        self.present(countryTableNC, animated: true)
     }
 }
 
@@ -121,6 +121,7 @@ extension WorldTimeTableViewController: UITableViewDataSource {
     }
     
 }
+
 
 #Preview {
     UINavigationController(rootViewController: WorldTimeTableViewController())

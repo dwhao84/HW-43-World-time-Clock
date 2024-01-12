@@ -7,11 +7,14 @@
 
 import UIKit
 
-class CountryTableViewController: UIViewController {
+class CountryTableViewController: UIViewController  {
 
     var tableView: UITableView = UITableView()
     let searchBar: UISearchBar = UISearchBar()
+    let searchController: UISearchController = UISearchController(searchResultsController: nil)
 
+    lazy var filterTimeZoneData = allTimeZone
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,7 +23,8 @@ class CountryTableViewController: UIViewController {
         configureTableView()
         addDelegateAndDataSource ()
         constraintTableView      ()
-        configureSearchBar       ()
+//        configureSearchBar       ()
+        configureSearchController()
     }
     
     
@@ -51,13 +55,64 @@ class CountryTableViewController: UIViewController {
     }
     
     func configureSearchBar () {
+        let standardApperance = self.navigationItem.standardAppearance
+
+        let scrollEdgeAppearance = self.navigationItem.scrollEdgeAppearance
+
+        self.navigationController?.navigationItem.standardAppearance = standardApperance
+        self.navigationController?.navigationItem.scrollEdgeAppearance = scrollEdgeAppearance
+
+        searchBar.showsSearchResultsButton = true
+
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.searchBar.prompt = "Choose Country"
-        self.searchBar.text   = "Search"
         self.navigationItem.titleView?.tintColor = SystemColor.orange
+        searchBar.showsCancelButton = true
+        searchBar.isTranslucent = false
+        searchBar.prompt        = "Choose Country"
+        searchBar.text          = "Search"
+        searchBar.tintColor     = SystemColor.orange
+        searchBar.barStyle      = .black
         searchBar.sizeToFit()
+    }
+    
+    func configureSearchController () {
+
+        let prompt: String = "Change Country"
+
+
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+
+        let standardApperance = self.navigationItem.standardAppearance
+        let scrollEdgeAppearance = self.navigationItem.scrollEdgeAppearance
+//        self.navigationController?.navigationItem.standardAppearance = standardApperance
+        self.navigationController?.navigationItem.scrollEdgeAppearance = scrollEdgeAppearance
+
+        self.navigationItem.searchController                  = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling       = false
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.automaticallyShowsCancelButton       = true
+
+        searchController.searchResultsUpdater  = self
+
+        searchController.searchBar.placeholder       = "Search"
+        searchController.searchBar.prompt            = prompt
+        searchController.searchBar.tintColor         = SystemColor.orange
+        searchController.searchBar.returnKeyType     = .go
+        searchController.searchBar.barStyle          = .black
+        searchController.searchBar.showsCancelButton = true
+        searchController.searchBar.isTranslucent     = false
+        searchController.searchBar.searchBarStyle    = .default
+
+        searchController.searchBar.searchTextField.textColor = SystemColor.white
+
+
+        searchController.isActive  = true
+        definesPresentationContext = true
+
+        print("configureSearchBar success")
     }
 }
 
@@ -97,26 +152,34 @@ extension CountryTableViewController: UITableViewDataSource {
     }
 }
 
-extension CountryTableViewController: UISearchBarDelegate {
-    
+extension CountryTableViewController: UISearchControllerDelegate, UISearchBarDelegate  {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchBar.tintColor         = SystemColor.orange
     }
-    
+
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = true
         searchBar.tintColor         = SystemColor.orange
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: true)
     }
-    
 }
 
-extension CountryTableViewController: UISearchControllerDelegate {
-    
+extension CountryTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        searchController.searchResultsUpdater = self
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            filterTimeZoneData = allTimeZone.filter { allTimeZone in (
+                        allTimeZone.description.localizedStandardContains(searchText)
+                    )}
+                } else {
+                    filterTimeZoneData = allTimeZone
+                }
+                tableView.reloadData()
+        }
 }
 
 #Preview {
